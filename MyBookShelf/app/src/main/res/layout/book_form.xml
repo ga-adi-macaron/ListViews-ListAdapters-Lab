@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/bookImg"
+        android:layout_width="70sp"
+        android:layout_height="70sp" />
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/bookImg"
+        android:textColor="#000000"
+        android:background="#9f66d4de"
+        android:text="Yo"
+        android:textSize="25sp"/>
+    <TextView
+        android:id="@+id/author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/bookImg"
+        android:layout_below="@id/title"
+        android:textColor="#000000"
+        android:background="#9f66d4de"
+        android:textSize="20sp"
+        android:text="Hey"/>
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/bookImg"
+        android:layout_below="@id/author"
+        android:text="Date"
+        android:textColor="#444444"
+        android:background="#9f66d4de"/>
+
+
+</RelativeLayout>
