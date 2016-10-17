@@ -60,13 +60,16 @@ public class MainActivity extends AppCompatActivity {
 
                 if (convertView==null){
                     LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
-                    convertView = inflater.inflate(android.R.layout.simple_list_item_2,null);
+                    convertView = inflater.inflate(R.layout.custom_adapter,null);
                 }
 
-                TextView textView = (TextView)convertView.findViewById(android.R.id.text1);
+                TextView textView = (TextView)convertView.findViewById(R.id.text1);
                 textView.setText(mBookList.get(position).getTitle());
-                TextView textView2 = (TextView)convertView.findViewById(android.R.id.text2);
+                TextView textView2 = (TextView)convertView.findViewById(R.id.text2);
                 textView2.setText(mBookList.get(position).getAuthor());
+                TextView textView3 = (TextView)convertView.findViewById(R.id.text3);
+                textView3.setText(mBookList.get(position).getDetails());
+
                 return convertView;
             }
         };
@@ -77,9 +80,11 @@ public class MainActivity extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView textView = (TextView)view.findViewById(android.R.id.text1);
+                TextView textView = (TextView)view.findViewById(R.id.text1);
                 textView.setTextColor(Color.RED);
-                TextView textView2 = (TextView)view.findViewById(android.R.id.text2);
+                TextView textView2 = (TextView)view.findViewById(R.id.text2);
+                textView2.setTextColor(Color.RED);
+                TextView textView3 = (TextView)view.findViewById(R.id.text3);
                 textView2.setTextColor(Color.RED);
             }
         });
@@ -89,12 +94,12 @@ public class MainActivity extends AppCompatActivity {
     private List<Book> generateBooks(){
         List<Book> books = new ArrayList<>();
 
-        books.add(new Book("Apples Book","Brad"));
-        books.add(new Book("Cats Book","Ryan"));
-        books.add(new Book("Eagles Book","Kate"));
-        books.add(new Book("Strawberries Cathy","Brad"));
-        books.add(new Book("Dogs Book","Tom"));
-        books.add(new Book("Ants Book","Zane"));
+        books.add(new Book("Apples Book","Brad","This is a book about apple."));
+        books.add(new Book("Cats Book","Ryan","This is a book about cat."));
+        books.add(new Book("Eagles Book","Kate","An eagle is coming to town."));
+        books.add(new Book("Strawberries Cathy","Brad","Strawberries taste sweet."));
+        books.add(new Book("Dogs Book","Tom","Who lets the dogs out."));
+        books.add(new Book("Ants Book","Zane","Books for ants."));
 
         return books;
     }
