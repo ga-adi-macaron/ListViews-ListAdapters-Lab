@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //Sort by title if true else sort by Author
     private List<Book> sortBookByTitle(List<Book> bookList, boolean isTitle){
         //Sort by title
-        if (true){
+        if (isTitle){
             List<String> titleList = new ArrayList<>();
             HashMap<String, Book> bookMap = new HashMap<>();
 
