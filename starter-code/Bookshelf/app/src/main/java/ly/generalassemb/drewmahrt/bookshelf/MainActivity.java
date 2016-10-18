@@ -21,7 +21,12 @@ public class MainActivity extends AppCompatActivity {
 
     //TODO: Define your ListView
 
+    ListView listView;
+
+
     //TODO: Define your Book List
+
+    List <Book> mBookList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,26 +41,60 @@ public class MainActivity extends AppCompatActivity {
         mBookAdapter = new BaseAdapter() {
             @Override
             public int getCount() {
+
                 return mBookList.size();
             }
 
             @Override
             public Object getItem(int position) {
+
                 return mBookList.get(position);
             }
 
             @Override
             public long getItemId(int position) {
+
                 return position;
             }
 
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 //TODO: Update the view
+
+                if (counterView == null) {
+                    LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
+                    convertView = inflater.inflate(android.R.layout.simple_list_item_2, null);
+
+                }
+
+                TextView textView = (TextView) convertView.findViewById(android.R.id.text1);
+                textView.setText(mBookList.get(position).getTitle());
+
+                TextView textView2 = (TextView) counterView.findViewById(android.R.id.text2);
+                textView2.setText(mBookList.get(position).getAuthor());
+
+                return convertView;
             }
         };
 
         //TODO: Set the ListView's adapter
+
+        listView.setAdapter(mBookList);
+        mBookAdapter.notifyDataSetChanged();
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView textView = (TextView) view.findViewById(android.R.id.text1);
+                TextView textView2 = (TextView) view.findViewById(android.R.id.text2);
+                textView.setTextColor(Color.RED);
+                textView2.setTextColor(Color.RED);
+                mBookAdapter.notifyDataSetChanged();
+            }
+                                        }
+
+        //mBookAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, mStringList);
+
 
     }
 
