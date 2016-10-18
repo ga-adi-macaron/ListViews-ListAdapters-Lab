@@ -1,11 +1,13 @@
 package ly.generalassemb.drewmahrt.bookshelf;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -14,14 +16,17 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     BaseAdapter mBookAdapter;
 
     //TODO: Define your ListView
+    ListView mListView;
 
     //TODO: Define your Book List
+    List<Book> mBookList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +57,28 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 //TODO: Update the view
+                if (convertView == null){
+                    LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
+                    convertView = inflater.inflate(android.R.layout.simple_list_item_1, null);
+                }
+                TextView textView = (TextView) convertView.findViewById(android.R.id.text1);
+                textView.setText("Title: " + mBookList.get(position).getTitle() +
+                        "\nAuthor: " + mBookList.get(position).getAuthor());
+                return convertView;
             }
         };
 
         //TODO: Set the ListView's adapter
+        mListView = (ListView) findViewById(R.id.list_view);
+        mListView.setAdapter(mBookAdapter);
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView textView = (TextView)view.findViewById(android.R.id.text1);
+                textView.setTextColor(Color.RED);
+            }
+        });
 
     }
 
