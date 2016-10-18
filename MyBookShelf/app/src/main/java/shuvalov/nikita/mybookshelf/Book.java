@@ -1,6 +1,5 @@
 package shuvalov.nikita.mybookshelf;
 
-import android.graphics.drawable.Drawable;
 
 /**
  * Created by drewmahrt on 12/16/15.
@@ -10,11 +9,13 @@ public class Book {
     private String mAuthor;
     private int mDate;
     private int mImg;
+
     public Book(String title,String author, int date, int img){
         mTitle = title;
         mAuthor = author;
         mDate = date;
         mImg = img;
+
     }
 
     public String getTitle() {
@@ -27,5 +28,7 @@ public class Book {
 
     public String getDate(){return String.valueOf(mDate);}
 
-    public int getImgPath(){return mImg;}
+    public int getImg(){return mImg;}
+
+
 }

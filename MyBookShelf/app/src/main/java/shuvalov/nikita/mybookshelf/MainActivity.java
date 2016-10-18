@@ -1,8 +1,7 @@
 package shuvalov.nikita.mybookshelf;
 
-import android.content.Context;
+
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,16 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
-import org.xmlpull.v1.XmlPullParser;
 
 import java.util.ArrayList;
-import java.util.Collections;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         listView = (ListView) findViewById(R.id.listView);
+
 
         //Use helper method to add books to the list
         mBookList = generateBooks();
@@ -66,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 textView1.setText(mBookList.get(position).getTitle());
                 textView2.setText(mBookList.get(position).getAuthor());
                 textView3.setText(mBookList.get(position).getDate());
-                imgV.setImageResource(mBookList.get(position).getImgPath());
+                imgV.setImageResource(mBookList.get(position).getImg());
                 return convertView;
             }
 
@@ -96,6 +93,9 @@ public class MainActivity extends AppCompatActivity {
         books.add(new Book("Cat in the Hat", "Dr.Seuss",1957, R.drawable.cat));
         books.add(new Book("Bible", "G-d", 0, R.drawable.bible));
         books.add(new Book ("1984", "George Well", 1949, R.drawable.a1984));
+        books.add(new Book("A Brave New World", "Aldous Huxley", 1932,R.drawable.bnw));
+        books.add(new Book("HitchHiker's guide to the galaxy", "Douglas Adams", 1981, R.drawable.hgttg));
+        books.add(new Book("Pride and Prejudice and Zombies", "Jane Austen and Seth Grahame-Smith", 2009, R.drawable.ppzomb));
         return books;
     }
 }

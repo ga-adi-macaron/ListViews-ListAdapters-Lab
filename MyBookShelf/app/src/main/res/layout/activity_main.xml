@@ -10,23 +10,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="shuvalov.nikita.mybookshelf.MainActivity">
 
-    <Button
-        android:id="@+id/arrangeByTit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-
-        android:text="Arrange By Title"/>
-    <Button
-        android:id="@+id/arrangeByAuth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Arrange By Author"/>
 
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/arrangeByTit" />
+        android:layout_height="match_parent" />
 
 </RelativeLayout>
