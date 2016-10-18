@@ -78,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
                 text1.setTextColor(Color.RED);
                 TextView text2 = (TextView) view.findViewById(android.R.id.text2);
                 text2.setTextColor(Color.RED);
+
+                mBookAdapter.notifyDataSetChanged();
             }
         });
 
