@@ -11,5 +11,8 @@
     tools:context="ly.generalassemb.drewmahrt.bookshelf.MainActivity">
 
     <!-- Create your ListView here -->
-
+        <ListView
+            android:id="@+id/ListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></ListView>
 </LinearLayout>
