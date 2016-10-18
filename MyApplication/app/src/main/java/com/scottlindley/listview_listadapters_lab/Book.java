@@ -37,4 +37,19 @@ public class Book {
         mIsRead = b;
     }
 
+    public void setTitle(String title) {
+        mTitle = title;
+    }
+
+    public void setAuthor(String author) {
+        mAuthor = author;
+    }
+
+    public void setNumberPages(int numberPages) {
+        mNumberPages = numberPages;
+    }
+
+    public void setRead(boolean read) {
+        mIsRead = read;
+    }
 }

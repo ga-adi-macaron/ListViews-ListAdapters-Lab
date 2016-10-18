@@ -15,4 +15,20 @@
         android:id="@+id/book_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+    <Button
+        android:id="@+id/sort_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="sort"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
+    <Spinner
+        android:id="@+id/drop_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@id/sort_button"
+        android:layout_marginBottom="10dp">
+
+    </Spinner>
 </RelativeLayout>
