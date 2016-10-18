@@ -1,6 +1,5 @@
 package ly.generalassemb.drewmahrt.bookshelf;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,16 +10,18 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
-import java.util.zip.Inflater;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     BaseAdapter mBookAdapter;
+    Button mTittleButton;
+    Button mAuthorButton;
 
     //TODO: Define your ListView
     ListView mListView;
@@ -32,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Create Button
+        mTittleButton = (Button) findViewById(R.id.sortTitle);
+        mAuthorButton = (Button) findViewById(R.id.sortAuthor);
 
         //Use helper method to add books to the list
         mBookList = generateBooks();
@@ -85,9 +90,11 @@ public class MainActivity extends AppCompatActivity {
                 TextView textView2 = (TextView)view.findViewById(R.id.text2);
                 textView2.setTextColor(Color.RED);
                 TextView textView3 = (TextView)view.findViewById(R.id.text3);
-                textView2.setTextColor(Color.RED);
+                textView3.setTextColor(Color.RED);
             }
         });
+        mAuthorButton.setOnClickListener(this);
+        mTittleButton.setOnClickListener(this);
     }
 
     //Method to generate a list of Books
@@ -102,5 +109,57 @@ public class MainActivity extends AppCompatActivity {
         books.add(new Book("Ants Book","Zane","Books for ants."));
 
         return books;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.sortAuthor:
+                mBookList = sortBookByTitle(mBookList,false);
+                mBookAdapter.notifyDataSetChanged();
+                break;
+            case R.id.sortTitle:
+                mBookList = sortBookByTitle(mBookList,true);
+                mBookAdapter.notifyDataSetChanged();
+                break;
+        }
+    }
+
+    //Sort by title if true else sort by Author
+    private List<Book> sortBookByTitle(List<Book> bookList, boolean isTitle){
+        //Sort by title
+        if (true){
+            List<String> titleList = new ArrayList<>();
+            HashMap<String, Book> bookMap = new HashMap<>();
+
+            for (Book book : bookList) {
+                titleList.add(book.getTitle());
+                bookMap.put(book.getTitle(),book);
+            }
+
+            Collections.sort(titleList, String.CASE_INSENSITIVE_ORDER);
+            bookList.clear();
+
+            for (String title : titleList) {
+                bookList.add(bookMap.get(title));
+            }
+        //Sort by Author
+        }else {
+            List<String> authorList = new ArrayList<>();
+            HashMap<String, Book> bookMap = new HashMap<>();
+
+            for (Book book : bookList) {
+                authorList.add(book.getAuthor());
+                bookMap.put(book.getAuthor(),book);
+            }
+
+            Collections.sort(authorList, String.CASE_INSENSITIVE_ORDER);
+            bookList.clear();
+
+            for (String author : authorList) {
+                bookList.add(bookMap.get(author));
+            }
+        }
+        return mBookList;
     }
 }
