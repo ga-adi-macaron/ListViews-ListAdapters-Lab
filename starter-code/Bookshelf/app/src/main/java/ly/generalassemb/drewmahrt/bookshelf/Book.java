@@ -13,10 +13,12 @@ public class Book {
     }
 
     public String getTitle() {
+
         return mTitle;
     }
 
     public String getAuthor() {
+
         return mAuthor;
     }
 
